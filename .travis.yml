@@ -13,9 +13,9 @@ after_success:
   - docker build -t kandarpajvalia/multi-nginx ./nginx
   - docker build -t kandarpajvalia/multi-server ./server
   - docker build -t kandarpajvalia/multi-worker ./worker
-  #log in to the docker cli
+  # Log in to the docker cli
   - echo "$DOCKER_PASSWORD" | docker login  -u "$DOCKER_ID" --password-stdin
-  #push our images to docker hub
+  # Push our images to docker hub
   - docker push kandarpajvalia/multi-client
   - docker push kandarpajvalia/multi-nginx
   - docker push kandarpajvalia/multi-server
