@@ -3,20 +3,20 @@ services:
   - docker
 
 before_install:
-  - docker build -t kandarpajvalia/react-test -f ./client/Dockerfile.dev ./client
+  - docker build -t kajvalia/react-test -f ./client/Dockerfile.dev ./client
 
 script:
-  - docker run -e CI=true kandarpajvalia/react-test npm test
+  - docker run -e CI=true kajvalia/react-test npm test
 
 after_success:
-  - docker build -t kandarpajvalia/multi-client ./client
-  - docker build -t kandarpajvalia/multi-nginx ./nginx
-  - docker build -t kandarpajvalia/multi-server ./server
-  - docker build -t kandarpajvalia/multi-worker ./worker
+  - docker build -t kajvalia/multi-client ./client
+  - docker build -t kajvalia/multi-nginx ./nginx
+  - docker build -t kajvalia/multi-server ./server
+  - docker build -t kajvalia/multi-worker ./worker
   # Log in to the docker cli
   - echo "$DOCKER_PASSWORD" | docker login  -u "$DOCKER_ID" --password-stdin
   # Push our images to docker hub
-  - docker push kandarpajvalia/multi-client
-  - docker push kandarpajvalia/multi-nginx
-  - docker push kandarpajvalia/multi-server
-  - docker push kandarpajvalia/multi-worker
+  - docker push kajvalia/multi-client
+  - docker push kajvalia/multi-nginx
+  - docker push kajvalia/multi-server
+  - docker push kajvalia/multi-worker
