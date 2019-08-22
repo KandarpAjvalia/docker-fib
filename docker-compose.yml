@@ -9,6 +9,8 @@ services:
     build:
       dockerfile: Dockerfile.dev
       context: ./nginx
+    # If we ever tried to visit our group of containers at localhost:3050 map 
+    # it to port 80 inside the container because nginx runs on port 80 by default
     ports:
       - '3050:80'
   api:
